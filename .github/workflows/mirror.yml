@@ -1,6 +1,7 @@
 name: 'Mirror'
 
 on:
+  workflow_dispatch: {}
   schedule:
     - cron: "0 3 * * *"
 
@@ -14,6 +15,6 @@ jobs:
         
       - name: Mirroring
         run: |
-          git remote add --mirror=fetch mirror "ssh://git@github.com:OCA/OCB.git"
+          git remote add --mirror=fetch mirror "https://github.com/OCA/OCB.git"
           git fetch mirror +refs/heads/*:refs/remotes/origin/*
           git push --force --mirror --prune origin
